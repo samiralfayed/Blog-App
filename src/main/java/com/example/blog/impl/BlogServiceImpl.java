@@ -3,20 +3,23 @@ package com.example.blog.impl;
 import com.example.blog.model.Blog;
 import com.example.blog.repository.BlogRepository;
 import com.example.blog.service.BlogService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class BlogServiceImpl implements BlogService {
-    private final BlogRepository blogRepository;
 
-    public BlogServiceImpl(BlogRepository blogRepository) {
-        this.blogRepository = blogRepository;
-    }
+    @Autowired
+    private BlogRepository blogRepository;
 
     @Override
     public Blog createBlog(Blog blog) {
+        blog.setId(null); // Ensure ID is null to avoid update issues
+        blog.setCreatedAt(LocalDateTime.now()); // Set createdAt automatically
         return blogRepository.save(blog);
     }
 
@@ -26,18 +29,9 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Optional<Blog> getBlogById(Long id) {
-        return blogRepository.findById(id);
-    }
-
-    @Override
-    public Blog updateBlog(Long id, Blog updatedBlog) {
-        return blogRepository.findById(id).map(blog -> {
-            blog.setTitle(updatedBlog.getTitle());
-            blog.setContent(updatedBlog.getContent());
-            blog.setCategory(updatedBlog.getCategory());
-            return blogRepository.save(blog);
-        }).orElseThrow(() -> new RuntimeException("Blog not found"));
+    public Blog getBlogById(Long id) {
+        Optional<Blog> blog = blogRepository.findById(id);
+        return blog.orElse(null);
     }
 
     @Override
