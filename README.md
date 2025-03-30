@@ -7,7 +7,7 @@ A simple blog application built with **Spring Boot** for the backend and **HTML,
 - **Create Blog Post**: Allows users to create blog posts with title, content, and category.
 - **View Blog Posts**: Display all blog posts on the dashboard.
 - **Delete Blog Posts**: Users can delete blog posts.
-- **Responsive UI**: Mobile-friendly interface.
+- **Responsive UI**: Web-friendly interface.
 
 ## Tech Stack
 
