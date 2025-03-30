@@ -15,3 +15,4 @@ A simple blog application built with **Spring Boot** for the backend and **HTML,
 - **Frontend**: HTML, CSS, JavaScript
 - **Database**: MySQL
 - **Build Tool**: Maven
+![image](https://github.com/user-attachments/assets/0a51a9de-f6cc-48c7-9e3a-bf4ccf767a45)
