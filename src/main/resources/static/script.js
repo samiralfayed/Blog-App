@@ -40,7 +40,7 @@ function fetchPosts() {
 
 // Function to submit a new blog post
 document.getElementById("blogForm")?.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
     let title = document.getElementById("title").value.trim();
     let content = document.getElementById("content").value.trim();
@@ -69,7 +69,7 @@ document.getElementById("blogForm")?.addEventListener("submit", function (event)
         .then(data => {
             console.log("✅ Success:", data);
             showPopup(); // Show success popup
-            document.getElementById("blogForm").reset(); // Clear form
+            document.getElementById("blogForm").reset();
         })
         .catch(error => {
             console.error("Error:", error);
@@ -89,5 +89,5 @@ function closePopup() {
 
 // Function to navigate to the form page
 function goToForm() {
-    window.location.href = "create-post.html"; // Ensure the correct path
+    window.location.href = "create-post.html";
 }
